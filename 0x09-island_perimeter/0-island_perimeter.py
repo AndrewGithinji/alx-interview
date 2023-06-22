@@ -9,10 +9,12 @@ def island_perimeter(grid):
     Calculate the perimeter of a grid island.
     """
     perimeter = 0
-    for row in grid:
-        for i, j in zip([0] + row, row + [0]):
-            perimeter += int(i != j)
-    for column in zip(*grid):
-        for i, j in zip([0] + column, column + [0]):
-            perimeter += int(i != j)
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 1:
+                perimeter += 4
+                if i > 0 and grid[i - 1][j] == 1:
+                    perimeter -= 2
+                if j > 0 and grid[i][j - 1] == 1:
+                    perimeter -= 2
     return perimeter
