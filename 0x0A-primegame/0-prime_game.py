@@ -26,10 +26,10 @@ def isWinner(x, nums):
 
     Args:
         x (int): The number of rounds.
-        nums (list): An array of integers representing the upper limit for each round.
+        nums (list): An array of integers representing the upper limit.
 
     Returns:
-        str: The name of the player who won the most rounds (either "Maria" or "Ben").
+        str: The name of the player who won the most rounds.
              If the winner cannot be determined, returns None.
     """
     score = {"Maria": 0, "Ben": 0}
@@ -37,7 +37,8 @@ def isWinner(x, nums):
     add_prime(max(nums), primes)
 
     for round_num in range(x):
-        _sum = sum((i != 0 and i <= nums[round_num]) for i in primes[:nums[round_num] + 1])
+        _sum = sum((i != 0 and i <= nums[round_num])
+                   for i in primes[:nums[round_num] + 1])
         if _sum % 2:
             winner = "Maria"
         else:
